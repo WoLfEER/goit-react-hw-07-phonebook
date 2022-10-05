@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { contactApi } from './api';
 
 export const phoneBookSlice = createSlice({
   name: 'phonebook',
