@@ -1,10 +1,11 @@
 import ContactListItem from './ContactListItem';
 import { Container, ContactList } from './PhoneBook.styled';
 import { useSelector } from 'react-redux';
-import { getContacts, getFilterValue } from 'redux/selectors';
+import { getFilterValue } from 'redux/selectors';
+import { useGetContactsQuery } from '../../redux/api';
 
 const PhoneBook = () => {
-  const contacts = useSelector(getContacts);
+  const { data: contacts = [] } = useGetContactsQuery();
   const filterValue = useSelector(getFilterValue);
 
   const filteredItems = filterValue

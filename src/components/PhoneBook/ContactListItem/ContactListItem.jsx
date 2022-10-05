@@ -1,24 +1,30 @@
 import PropTypes from 'prop-types';
 import { Container } from './ContactListItem.styled';
-import { removeContact } from 'redux/contactsSlice';
-import { useDispatch } from 'react-redux';
+
 import Avatar from 'react-avatar';
+import { useDeleteContactMutation } from 'redux/api';
 
 const ContactListItem = ({ contact }) => {
-  const dispatch = useDispatch();
+  const [deleteContact, { isLoading: removing }] = useDeleteContactMutation();
 
-  const handleDelete = contactId => {
-    dispatch(removeContact(contactId));
-  };
-  
   return (
     <>
-      <Avatar size="25" color='#056cf2' name={contact.name} round={true} shape="square" />
+      <Avatar
+        size="25"
+        color="#056cf2"
+        name={contact.name}
+        round={true}
+        shape="square"
+      />
       <Container>
         <p>
           {contact.name}:<span>{contact.number}</span>
         </p>
-        <button type="button" onClick={() => handleDelete(contact.id)}>
+        <button
+          disabled={removing}
+          type="button"
+          onClick={() => deleteContact(contact.id)}
+        >
           Delete
         </button>
       </Container>
