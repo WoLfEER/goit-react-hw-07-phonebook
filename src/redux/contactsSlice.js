@@ -13,14 +13,6 @@ export const phoneBookSlice = createSlice({
       state.filter = action.payload;
     },
   },
-  extraReducers: builder => {
-    builder.addMatcher(
-      contactApi.endpoints.getContacts.matchFulfilled,
-      (state, { payload }) => {
-        state.contacts = payload;
-      }
-    );
-  },
 });
 
 export const { addContact, removeContact, filterContact } =

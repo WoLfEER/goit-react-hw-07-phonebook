@@ -18,7 +18,7 @@ const ContactListItem = ({ contact }) => {
       />
       <Container>
         <p>
-          {contact.name}:<span>{contact.number}</span>
+          {contact.name}:<span>{contact.phone}</span>
         </p>
         <button
           disabled={removing}
